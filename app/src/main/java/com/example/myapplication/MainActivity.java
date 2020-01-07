@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             score = 0;
         }
         else{
-            score = (int)timeLeftInMilis-1000.000;
+            score = ((int)timeLeftInMilis-1000.000)/1000;
         }
         //score =(int) timeLeftInMilis /1000.000;
         triesTextView.setText(String.valueOf(tries));
