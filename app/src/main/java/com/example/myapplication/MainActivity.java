@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 triesTextView.setText(String.valueOf(tries));
             }
         });
-
         buttonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,10 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 //sendOnServer();
             }
         });
-
-
-
     }
+
 
     private void startTimer() {
         buttonSendOnServer.setVisibility(View.INVISIBLE);
@@ -130,5 +127,15 @@ public class MainActivity extends AppCompatActivity {
         scoreTextView.setText(String.valueOf(score));
 
         buttonSendOnServer.setVisibility(View.VISIBLE);
+
+        buttonSendOnServer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+        //Tu je onclick do wysyłania wyników
+
+            }
+        });
     }
 }
