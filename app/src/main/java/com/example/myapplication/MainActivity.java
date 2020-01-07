@@ -7,15 +7,16 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private static final    long    startTimeInMilis=3000;
+    private static final    long    startTimeInMilis=3000,timeToNotify = 8000000;
     private TextView countDownTextView;
     private Button buttonStartPause, buttonSendOnServer, buttonReset;
 
-    private CountDownTimer cdt;
+    private CountDownTimer cdt, notificationCountDownTimer;
     private boolean timeRunning;
     private long timeLeftInMilis = startTimeInMilis;
 
@@ -24,6 +25,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        notificationCountDownTimer = new CountDownTimer(timeToNotify,10000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMilis = millisUntilFinished;
+            }
+
+            @Override
+            public void onFinish() {
+                Toast.makeText(getApplicationContext(),"Get as close to 1 s as You can!",Toast.LENGTH_LONG).show();
+            }
+        }.start();
+        Toast.makeText(getApplicationContext(),"Get as close to 1 s as You can!",Toast.LENGTH_LONG).show();
 
         countDownTextView = findViewById(R.id.timer);
         buttonStartPause = findViewById(R.id.buttonStart_Pause);
@@ -94,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         timeRunning = false;
         buttonStartPause.setText("start");
         cdt.cancel();
+
         buttonSendOnServer.setVisibility(View.VISIBLE);
     }
 }
