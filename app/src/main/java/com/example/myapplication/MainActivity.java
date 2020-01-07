@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 int sekundy = (int) (timeLeftInMilis/1000)%60;
                 String timeleftFormatted =  String.format(Locale.getDefault(),"%02d:%02d", sekundy,dziesiateMilisekundy);
                 countDownTextView.setText(timeleftFormatted);
+                tries = 0;
+                triesTextView.setText(String.valueOf(tries));
             }
         });
 
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         //ponizej jest zawarta logika obliczania punktow zdobydych przez uzytkownika
         if((int)timeLeftInMilis/1000.000<1)
         {
-            score = -(((int)timeLeftInMilis/1000.000)-1);
+            score = Math.round(-(((int)timeLeftInMilis/1000.000)-1) * 1e3)  / 1e3;
         }
         else if((int)timeLeftInMilis/1000.000==1){
             score = 0;
