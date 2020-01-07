@@ -8,10 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.Locale;
 
+
 public class MainActivity extends AppCompatActivity {
+
     private static final    long    startTimeInMilis=3000,timeToNotify = 8000000;
     private TextView countDownTextView, scoreTextView, triesTextView;
     private Button buttonStartPause, buttonSendOnServer, buttonReset;
@@ -21,12 +22,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean timeRunning;
     private long timeLeftInMilis = startTimeInMilis;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 /*        notificationCountDownTimer = new CountDownTimer(timeToNotify,10000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -39,12 +39,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();*/
         Toast.makeText(getApplicationContext(),"Get as close to 1 s as You can!",Toast.LENGTH_LONG).show();
-
         countDownTextView = findViewById(R.id.timer);
         buttonStartPause = findViewById(R.id.buttonStart_Pause);
         buttonSendOnServer = findViewById(R.id.buttonWyslanieNaServer);
         buttonReset = findViewById(R.id.reset);
-
         scoreTextView = findViewById(R.id.textScoreValue);
         triesTextView = findViewById(R.id.textTriesValue);
 
