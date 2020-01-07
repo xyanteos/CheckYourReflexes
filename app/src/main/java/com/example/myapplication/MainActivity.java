@@ -13,9 +13,10 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private static final    long    startTimeInMilis=3000,timeToNotify = 8000000;
-    private TextView countDownTextView;
+    private TextView countDownTextView, scoreTextView, triesTextView;
     private Button buttonStartPause, buttonSendOnServer, buttonReset;
-
+    public int tries = 0;
+    public double score=0;
     private CountDownTimer cdt, notificationCountDownTimer;
     private boolean timeRunning;
     private long timeLeftInMilis = startTimeInMilis;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        notificationCountDownTimer = new CountDownTimer(timeToNotify,10000) {
+/*        notificationCountDownTimer = new CountDownTimer(timeToNotify,10000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timeLeftInMilis = millisUntilFinished;
@@ -36,13 +37,16 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 Toast.makeText(getApplicationContext(),"Get as close to 1 s as You can!",Toast.LENGTH_LONG).show();
             }
-        }.start();
+        }.start();*/
         Toast.makeText(getApplicationContext(),"Get as close to 1 s as You can!",Toast.LENGTH_LONG).show();
 
         countDownTextView = findViewById(R.id.timer);
         buttonStartPause = findViewById(R.id.buttonStart_Pause);
         buttonSendOnServer = findViewById(R.id.buttonWyslanieNaServer);
         buttonReset = findViewById(R.id.reset);
+
+        scoreTextView = findViewById(R.id.textScoreValue);
+        triesTextView = findViewById(R.id.textTriesValue);
 
         buttonReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,9 +109,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void pauseTimer() {
+
         timeRunning = false;
         buttonStartPause.setText("start");
         cdt.cancel();
+        tries++;
+        //ponizej jest zawarta logika obliczania punktow zdobydych przez uzytkownika
+        if((int)timeLeftInMilis/1000.000<1)
+        {
+            score = -(((int)timeLeftInMilis/1000.000)-1);
+        }
+        else if((int)timeLeftInMilis/1000.000==1){
+            score = 0;
+        }
+        else{
+            score = (int)timeLeftInMilis-1000.000;
+        }
+        //score =(int) timeLeftInMilis /1000.000;
+        triesTextView.setText(String.valueOf(tries));
+        scoreTextView.setText(String.valueOf(score));
 
         buttonSendOnServer.setVisibility(View.VISIBLE);
     }
