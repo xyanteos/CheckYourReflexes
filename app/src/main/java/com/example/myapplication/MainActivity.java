@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         //ponizej jest zawarta logika obliczania punktow zdobydych przez uzytkownika
         if((int)timeLeftInMilis/1000.000<1)
         {
-            score = Math.round(-(((int)timeLeftInMilis/1000.000)-1) * 1e3)  / 1e3;
+            score = Math.round(-(((int)timeLeftInMilis/1000.000)-1) * 1e3)  / 1e3;//1e3 jest wykorzystywane do ograniczenia wynikow do 3 miejsc po przecinku.
         }
         else if((int)timeLeftInMilis/1000.000==1){
             score = 0;
