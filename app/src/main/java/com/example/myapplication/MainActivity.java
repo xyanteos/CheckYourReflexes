@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 timeLeftInMilis = 3000;
-                int dziesiateMilisekundy = (int) (timeLeftInMilis/100);
+                int dziesiateMilisekundy = (int) (timeLeftInMilis%1000);
                 int sekundy = (int) (timeLeftInMilis/1000)%60;
                 String timeleftFormatted =  String.format(Locale.getDefault(),"%02d:%02d", sekundy,dziesiateMilisekundy);
                 countDownTextView.setText(timeleftFormatted);
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateCountDownText() {
-        int dziesiateMilisekundy = (int) (timeLeftInMilis/100);
+        int dziesiateMilisekundy = (int) (timeLeftInMilis%1000);
         int sekundy = (int) (timeLeftInMilis/1000)%60;
         String timeleftFormatted =  String.format(Locale.getDefault(),"%02d:%02d", sekundy,dziesiateMilisekundy);
         countDownTextView.setText(timeleftFormatted);
