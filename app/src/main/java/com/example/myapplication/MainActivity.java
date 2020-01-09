@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final    long    startTimeInMilis=3000,timeToNotify = 8000000;
     private TextView countDownTextView, scoreTextView, triesTextView;
-    private Button buttonStartPause, buttonSendOnServer, buttonReset;
+    private Button buttonStartPause, buttonSendOnServer, buttonReset,buttonCheckLeaderBoard;
     public int tries = 0;
     public double score=0;
     private CountDownTimer cdt, notificationCountDownTimer;
@@ -45,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
         buttonReset = findViewById(R.id.reset);
         scoreTextView = findViewById(R.id.textScoreValue);
         triesTextView = findViewById(R.id.textTriesValue);
+        buttonCheckLeaderBoard = findViewById(R.id.buttonCheckLeaderBoard);
+
+        buttonCheckLeaderBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                przejdzNaLeaderBoard();
+            }
+        });
 
         buttonReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void przejdzNaLeaderBoard() {
+        Intent intent = new Intent(this, Main2Activity.class);
+        startActivity(intent);
     }
 
     private void startTimer() {
