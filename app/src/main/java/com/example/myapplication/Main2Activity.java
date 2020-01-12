@@ -19,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class Main2Activity extends AppCompatActivity {
         getBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 wracamy();
             }
         });
@@ -42,6 +44,7 @@ public class Main2Activity extends AppCompatActivity {
         updateScoreBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 updateuj();
             }
         });
@@ -56,10 +59,23 @@ public class Main2Activity extends AppCompatActivity {
                 (Request.Method.GET, "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/checkyourreflex-dcdzf/service/http/incoming_webhook/routerget", null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        try{
+                            int g=0;
+                            String result = "         Nickname      Tries       Result\n";
+                            do{
+                                JSONObject match = response.getJSONObject(g);
+                                result +="         "+  match.getString("nickname");
+                                result += "   "+ match.getString("tries");
+                                result += "   "+ match.getString("result");
+                                result += "\n";
+                                g++;
+                            }while(g<response.length());
+                            TextView widok = findViewById(R.id.textViewWyniki);
+                            widok.setText(result);
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
 
-                        String odpowiedz = response.toString();
-                        TextView widok = findViewById(R.id.textViewWyniki);
-                        widok.setText(odpowiedz);
                     }
                 }, new Response.ErrorListener() {
                     @Override
