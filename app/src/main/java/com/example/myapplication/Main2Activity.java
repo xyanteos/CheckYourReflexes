@@ -78,7 +78,7 @@ public class Main2Activity extends AppCompatActivity {
                             //ponizej segreguje wyniki
                             for(int j=0;j<response.length();j++)
                             for(int i=0;i<response.length()-1;i++){
-                                if(Double.parseDouble(wyniki[i][2])>Double.parseDouble(wyniki[i][2])){
+                                if(Double.parseDouble(wyniki[i][2])>Double.parseDouble(wyniki[i+1][2])){
                                     String tempNick,tempScore,tempTries;
                                     tempNick = wyniki[i][0];
                                     tempTries = wyniki[i][1];
