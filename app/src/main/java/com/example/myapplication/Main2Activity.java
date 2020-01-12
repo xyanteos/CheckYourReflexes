@@ -75,6 +75,34 @@ public class Main2Activity extends AppCompatActivity {
                                 g++;
                             }while(g<response.length());
                             String wypisz = "";
+                            //ponizej segreguje wyniki
+                            for(int j=0;j<response.length();j++)
+                            for(int i=0;i<response.length()-1;i++){
+                                if(Double.parseDouble(wyniki[i][2])>Double.parseDouble(wyniki[i][2])){
+                                    String tempNick,tempScore,tempTries;
+                                    tempNick = wyniki[i][0];
+                                    tempTries = wyniki[i][1];
+                                    tempScore = wyniki[i][2];
+                                    wyniki[i][0] = wyniki[i+1][0];
+                                    wyniki[i][1] = wyniki[i+1][1];
+                                    wyniki[i][2] = wyniki[i+1][2];
+                                    wyniki[i+1][0] = tempNick;
+                                    wyniki[i+1][1] = tempTries;
+                                    wyniki[i+1][2] = tempScore;
+                                }
+                                if(Integer.parseInt(wyniki[i][1])>Integer.parseInt(wyniki[i+1][1])){
+                                    String tempNick,tempScore,tempTries;
+                                    tempNick = wyniki[i][0];
+                                    tempTries = wyniki[i][1];
+                                    tempScore = wyniki[i][2];
+                                    wyniki[i][0] = wyniki[i+1][0];
+                                    wyniki[i][1] = wyniki[i+1][1];
+                                    wyniki[i][2] = wyniki[i+1][2];
+                                    wyniki[i+1][0] = tempNick;
+                                    wyniki[i+1][1] = tempTries;
+                                    wyniki[i+1][2] = tempScore;
+                                }
+                            }
 
                             //Tworze stringa do wyswietlania ostatecznie
                             for(int j=0;j<response.length();j++){
