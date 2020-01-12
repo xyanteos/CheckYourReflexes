@@ -42,7 +42,7 @@
 
             <TextView
                 android:id="@+id/textViewWyniki"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="8sp"
                 android:paddingLeft="50sp"
@@ -50,8 +50,8 @@
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="18sp"
-                android:typeface="serif"
-                tools:text="Tutaj znajda sie wyniki nasszej gierki jak tylko ogarne jak w tyum miejscu zastosowac JSONowe komendy GET" />
+                android:typeface="serif" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

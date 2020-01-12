@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 countDownTextView.setText(timeleftFormatted);
                 tries = 0;
                 triesTextView.setText(String.valueOf(tries));
+                buttonSendOnServer.setVisibility(View.INVISIBLE);
             }
         });
 
