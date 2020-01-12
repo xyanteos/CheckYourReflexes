@@ -7,7 +7,7 @@
     <string name="tries">tries</string>
     <string name="score">score</string>
     <string name="check_leaderboard">Check leaderboard</string>
-    <string name="textview">Tutaj znajda sie wyniki nasszej gierki jak tylko ogarne jak w tyum miejscu zastosowac JSONowe komendy GET</string>
+    <string name="textview">Please update the scoreboard.</string>
     <string name="get_back_to_game">Get back to game</string>
     <string name="update_scoreboard">update scoreboard</string>
 </resources>

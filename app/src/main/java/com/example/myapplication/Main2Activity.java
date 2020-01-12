@@ -61,17 +61,27 @@ public class Main2Activity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         try{
                             int g=0;
-                            String result = "         Nickname      Tries       Result\n";
+                            String result = "  Nickname         Tries           Result\n";
+                            String wyniki[][] = new String[response.length()][3];
                             do{
                                 JSONObject match = response.getJSONObject(g);
-                                result +="         "+  match.getString("nickname");
-                                result += "   "+ match.getString("tries");
-                                result += "   "+ match.getString("result");
-                                result += "\n";
+                                String nick = match.getString("nickname");
+                                String tries = match.getString("tries");
+                                String score = match.getString("result");
+                                //ponizej zapisuje wynik do tablicy zeby mozna bylo go pozniej uporzadkowac
+                                wyniki[g][2] = score ;
+                                wyniki[g][1] = tries;
+                                wyniki[g][0] = nick;
                                 g++;
                             }while(g<response.length());
+                            String wypisz = "";
+
+                            //Tworze stringa do wyswietlania ostatecznie
+                            for(int j=0;j<response.length();j++){
+                                wypisz+=String.format("%1$-10s %2$10s %3$20s \n",wyniki[j][0], wyniki[j][1], wyniki[j][2]);
+                            }
                             TextView widok = findViewById(R.id.textViewWyniki);
-                            widok.setText(result);
+                            widok.setText(result+wypisz);
                         }catch (JSONException e){
                             e.printStackTrace();
                         }
