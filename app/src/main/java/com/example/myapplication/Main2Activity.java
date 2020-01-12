@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -61,7 +60,7 @@ public class Main2Activity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         try{
                             int g=0;
-                            String result = "  Nickname         Tries           Result\n";
+                            String result = "Nickname             Tries               Result\n";
                             String wyniki[][] = new String[response.length()][3];
                             do{
                                 JSONObject match = response.getJSONObject(g);
@@ -106,7 +105,12 @@ public class Main2Activity extends AppCompatActivity {
 
                             //Tworze stringa do wyswietlania ostatecznie
                             for(int j=0;j<response.length();j++){
-                                wypisz+=String.format("%1$-10s %2$10s %3$20s \n",wyniki[j][0], wyniki[j][1], wyniki[j][2]);
+                               // wypisz+=String.format("%1$-10s %2$10s %3$20s \n",wyniki[j][0], wyniki[j][1], wyniki[j][2]);
+                                int tempLenghtN = wyniki[j][0].length();
+                                int tempLenghtT = wyniki[j][1].length();
+                                int tempLenghtS = wyniki[j][2].length();
+                                wypisz+=String.format("|%-"+(30-tempLenghtN)+".13s  %-"+(25-tempLenghtS)+".3s  %"+(5-tempLenghtT)+".5s|\n",wyniki[j][0], wyniki[j][1], wyniki[j][2]);
+
                             }
                             TextView widok = findViewById(R.id.textViewWyniki);
                             widok.setText(result+wypisz);
