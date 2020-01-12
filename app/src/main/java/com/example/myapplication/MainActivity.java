@@ -1,10 +1,10 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,15 +17,17 @@ public class MainActivity extends AppCompatActivity {
     private static final    long    startTimeInMilis=3000,timeToNotify = 8000000;
     private TextView countDownTextView, scoreTextView, triesTextView;
     private Button buttonStartPause, buttonSendOnServer, buttonReset,buttonCheckLeaderBoard;
-    public int tries = 0;
-    public double score=0;
+    private  int tries = 0;
+    private  double score=0;
     private CountDownTimer cdt, notificationCountDownTimer;
     private boolean timeRunning;
     private long timeLeftInMilis = startTimeInMilis;
 
+    public static int tSEND;
+    public static double sSEND;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 /*        notificationCountDownTimer = new CountDownTimer(timeToNotify,10000) {
@@ -83,14 +85,18 @@ public class MainActivity extends AppCompatActivity {
         buttonSendOnServer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //sendOnServer();
+                WyslijWynik();
+                double scoreSEND = score+0;
+                sSEND = scoreSEND;
+                int triesSEND = tries+0;
+                tSEND = triesSEND;
             }
         });
-
-
-
     }
-
+    private void WyslijWynik(){
+        Intent intent = new Intent(this, Main3Activity.class);
+        startActivity(intent);
+    }
     private void przejdzNaLeaderBoard() {
         Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
@@ -143,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
         //score =(int) timeLeftInMilis /1000.000;
         triesTextView.setText(String.valueOf(tries));
         scoreTextView.setText(String.valueOf(score));
-
         buttonSendOnServer.setVisibility(View.VISIBLE);
     }
 }

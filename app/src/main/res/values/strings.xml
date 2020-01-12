@@ -10,4 +10,9 @@
     <string name="textview">Please update the scoreboard.</string>
     <string name="get_back_to_game">Get back to game</string>
     <string name="update_scoreboard">update scoreboard</string>
+    <string name="send_your_score">Send Your Score</string>
+    <string name="your_nickname_here">Your nickname here</string>
+    <string name="final_score">Final score:</string>
+    <string name="your_tries">Your tries:</string>
+    <string name="send_result">Send Result</string>
 </resources>
