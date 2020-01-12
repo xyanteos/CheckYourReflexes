@@ -2,7 +2,7 @@
     <string name="app_name">CheckYourReflexes!</string>
     <string name="_00_00">00:00</string>
     <string name="start">start</string>
-    <string name="wyslij">Wyslij</string>
+    <string name="wyslij">Send</string>
     <string name="reset">Reset</string>
     <string name="tries">tries</string>
     <string name="score">score</string>
